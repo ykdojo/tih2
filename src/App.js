@@ -4,6 +4,13 @@ import './App.css';
 import "bootswatch/dist/darkly/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.js';
 
+const questions = [
+  {id: 'id-0', company: 'Macrohard', position: 'Software Engineer'},
+  {id: 'id-1', company: 'Banana', position: 'Software Engineer'},
+  {id: 'id-2', company: 'Poodle', position: 'Product Manager'},
+  {id: 'id-3', company: 'Bookface', position: 'Software Engineer'}
+]
+
 function App() {
   return (
     <div className="App">
@@ -31,10 +38,11 @@ function App() {
 
       <div className="container" style={{marginTop: '90px'}}>
         <h4>Recent interview questions</h4>
-        <QuestionCard company='Macrohard' position='Software Engineer'/>
-        <QuestionCard company='Banana' position='Software Engineer'/>
-        <QuestionCard company='Poodle' position='Product Manager'/>
-        <QuestionCard company='Bookface' position='Software Engineer'/>
+        {
+          questions.map(q =>
+            <QuestionCard key={q.id} company={q.company} position={q.position}/>
+          )
+        }
       </div>
     </div>
   );
