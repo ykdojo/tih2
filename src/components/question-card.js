@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function QuestionCard(props) {
   return (
@@ -15,7 +16,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
           <span> ･ </span>
           {props.xAgo}
           <span> ･ </span>
-          {props.numComments} comments
+          <Link to={"/questions/" + props.id}>{props.numComments} comments</Link>
         </h6>
       </div>
     </div>

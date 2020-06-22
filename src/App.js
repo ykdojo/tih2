@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionCard from './components/question-card';
+import QuestionDetail from './components/question-detail';
 import Navbar from './components/navbar';
 import './App.css';
 import "bootswatch/dist/darkly/bootstrap.min.css";
@@ -23,10 +24,11 @@ function App() {
           {
             questions.map(q =>
               <QuestionCard key={q.id} company={q.company} position={q.position}
-                            xAgo={q.xAgo} numComments={q.numComments}/>
+                            xAgo={q.xAgo} numComments={q.numComments} id={q.id}/>
             )
           }
         </Route>
+        <Route path="/questions/:id" component={QuestionDetail}/>
         <Route path="/submit">
           <h4>Submit</h4>
         </Route>
