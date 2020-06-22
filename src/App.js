@@ -7,11 +7,17 @@ import "bootswatch/dist/darkly/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.js';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
+const body = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+
 const questions = [
-  {id: 'id-0', company: 'Macrohard', position: 'Software Engineer', numComments: 0, xAgo: '3 hours ago'},
-  {id: 'id-1', company: 'Banana', position: 'Software Engineer', numComments: 2, xAgo: '7 hours ago'},
-  {id: 'id-2', company: 'Poodle', position: 'Product Manager', numComments: 3, xAgo: '12 hours ago'},
-  {id: 'id-3', company: 'Bookface', position: 'Software Engineer', numComments: 0, xAgo: '2 days ago'}
+  {id: 'id-0', company: 'Macrohard', position: 'Software Engineer', numComments: 0, xAgo: '3 hours ago', body: body},
+  {id: 'id-1', company: 'Banana', position: 'Software Engineer', numComments: 2, xAgo: '7 hours ago', body: body},
+  {id: 'id-2', company: 'Poodle', position: 'Product Manager', numComments: 3, xAgo: '12 hours ago', body: body},
+  {id: 'id-3', company: 'Bookface', position: 'Software Engineer', numComments: 0, xAgo: '2 days ago', body: body}
 ]
 
 function App() {
@@ -24,7 +30,7 @@ function App() {
           {
             questions.map(q =>
               <QuestionCard key={q.id} company={q.company} position={q.position}
-                            xAgo={q.xAgo} numComments={q.numComments} id={q.id}/>
+                            xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
             )
           }
         </Route>
