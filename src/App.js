@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import './App.css';
 import "bootswatch/dist/darkly/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.js';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 const questions = [
   {id: 'id-0', company: 'Macrohard', position: 'Software Engineer', numComments: 0, xAgo: '3 hours ago'},
@@ -14,19 +15,26 @@ const questions = [
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Navbar/>
-      
-      <div className="container" style={{marginTop: '90px'}}>
-        <h4>Recent interview questions</h4>
-        {
-          questions.map(q =>
-            <QuestionCard key={q.id} company={q.company} position={q.position}
-                          xAgo={q.xAgo} numComments={q.numComments}/>
-          )
-        }
+      <div className="container" style={{marginTop: '100px'}}>
+        <Route path="/" exact>
+          <h4>Recent interview questions</h4>
+          {
+            questions.map(q =>
+              <QuestionCard key={q.id} company={q.company} position={q.position}
+                            xAgo={q.xAgo} numComments={q.numComments}/>
+            )
+          }
+        </Route>
+        <Route path="/submit">
+          <h4>Submit</h4>
+        </Route>
+        <Route path="/about">
+          <h4>About</h4>
+        </Route>
       </div>
-    </div>
+    </Router>
   );
 }
 

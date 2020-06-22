@@ -1,23 +1,24 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
   return (
     <nav className="navbar navbar-dark bg-primary navbar-expand-sm fixed-top">
     <div className="container">
-      <a className="navbar-brand" href="/">TechInterviewHub.io</a>
+      <Link to="/" className="navbar-brand">TechInterviewHub.io</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="navbar-item nav-link">
-            <a href="/">Questions</a>
+            <Link to="/" className="nav-link">Questions</Link>
           </li>
           <li className="navbar-item nav-link">
-            <a href="/">Submit</a>
+            <Link to="/submit" className="nav-link">Submit</Link>
           </li>
           <li className="navbar-item nav-link">
-            <a href="/">About</a>
+            <Link to="/about" className="nav-link">About</Link>
           </li>
         </ul>
       </div>
