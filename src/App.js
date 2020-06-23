@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionCard from './components/question-card';
+import QuestionForm from './components/question-form';
 import QuestionDetail from './components/question-detail';
 import Navbar from './components/navbar';
 import './App.css';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/questions/:id" component={QuestionDetail}/>
         <Route path="/submit">
           <h4>Submit</h4>
+          <QuestionForm/>
         </Route>
         <Route path="/about">
           <h4>About</h4>
