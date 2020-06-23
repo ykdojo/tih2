@@ -3,19 +3,27 @@ import React from 'react';
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.defaultState = {
       company: '',
       position: '',
       question: '',
       isAnonymous: true,
     }
 
+    // Make a copy of defaultState before assinging it to state.
+    this.state = Object.assign({}, this.defaultState);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
-    console.log(this.state);
+    console.log('company: ' + this.state.company);
+    console.log('position: ' + this.state.position);
+    console.log('question: ' + this.state.question);
+    console.log('isAnonymous: ' + this.state.isAnonymous);
+    
+    this.setState(Object.assign({}, this.defaultState));
     event.preventDefault();
   }
 
