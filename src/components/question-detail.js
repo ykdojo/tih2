@@ -22,22 +22,63 @@ const questionDetails = {
            comments: []}
 }
 
-function QuestionDetail(props) {
-  const q = questionDetails[props.match.params.id];
-  const comments = q.comments;
-  return (
-    <div>
-      <QuestionCard key={q.id} company={q.company} position={q.position}
-        xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
-      <div className='comments' style={{marginLeft: '30px'}}>
-      {
-        comments.map((c, i) =>
-          <Comment key={i} username={c.username} body={c.body} xAgo={c.xAgo} />
-        )
-      }
+class QuestionDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.defaultState = {
+      comment: '',
+      isAnonymous: true,
+    };
+    this.state = Object.assign({}, this.defaultState);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    console.log('comment: ' + this.state.comment);
+    console.log('isAnonymous: ' + this.state.isAnonymous);
+    this.setState(Object.assign({}, this.defaultState));
+    event.preventDefault();
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.name === 'isAnonymous' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({[name]: value});
+  }
+
+  render() {
+    const q = questionDetails[this.props.match.params.id];
+    const comments = q.comments;
+    return (
+      <div>
+        <QuestionCard key={q.id} company={q.company} position={q.position}
+          xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
+        <div className='comments mb-3' style={{marginLeft: '30px'}}>
+        {
+          comments.map((c, i) =>
+            <Comment key={i} username={c.username} body={c.body} xAgo={c.xAgo} />
+          )
+        }
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <textarea name="comment" value={this.state.comment} onChange={this.handleChange} className="form-control" placeholder="Please write your solution/comment in detail." rows="7"/>
+            </div>
+            <div className="form-check">
+              <input type="checkbox" name="isAnonymous" checked={this.state.isAnonymous} onChange={this.handleChange} className="form-check-input"/>
+              <label className="form-check-label">Submit Anonymously</label>
+            </div>
+            <div className="mt-3">
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default QuestionDetail;
