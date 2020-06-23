@@ -1,6 +1,8 @@
 import React from 'react';
 import QuestionCard from './question-card';
 import Comment from './comment';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const body = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
@@ -20,6 +22,16 @@ const questionDetails = {
                        {body: body, xAgo: '2 days ago'}, ]},
   'id-3': {id: 'id-3', company: 'Bookface', position: 'Software Engineer', numComments: 0, xAgo: '2 days ago', body: body,
            comments: []}
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 class QuestionDetail extends React.Component {
@@ -55,6 +67,7 @@ class QuestionDetail extends React.Component {
     const comments = q.comments;
     return (
       <div>
+        <ScrollToTop/>
         <QuestionCard key={q.id} company={q.company} position={q.position}
           xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
         <div className='comments mb-3' style={{marginLeft: '30px'}}>
