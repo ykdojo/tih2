@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionCard from './question-card';
+import Comment from './comment';
 
 const body = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
@@ -23,9 +24,19 @@ const questionDetails = {
 
 function QuestionDetail(props) {
   const q = questionDetails[props.match.params.id];
+  const comments = q.comments;
   return (
-    <QuestionCard key={q.id} company={q.company} position={q.position}
-      xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
+    <div>
+      <QuestionCard key={q.id} company={q.company} position={q.position}
+        xAgo={q.xAgo} numComments={q.numComments} body={q.body} id={q.id}/>
+      <div className='comments' style={{marginLeft: '30px'}}>
+      {
+        comments.map((c, i) =>
+          <Comment key={i} username={c.username} body={c.body} xAgo={c.xAgo} />
+        )
+      }
+      </div>
+    </div>
   );
 }
 
