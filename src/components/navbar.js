@@ -5,7 +5,7 @@ function Navbar(props) {
   return (
     <nav className="navbar navbar-dark bg-primary navbar-expand-sm fixed-top">
     <div className="container">
-      <Link to="/" className="navbar-brand">TechInterviewHub.io</Link>
+      <Link to="/" className="navbar-brand">TechInterviewHub</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span className="navbar-toggler-icon"></span>
       </button>
